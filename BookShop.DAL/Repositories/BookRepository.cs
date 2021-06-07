@@ -1,52 +1,59 @@
 ﻿using BookShop.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BookShop.DAL
 {
     public class BookRepository : IProductRepository<Book>
     {
-        public void Add(Book entity)
+        LibraryContext _context;
+
+        public BookRepository(LibraryContext libraryContext)
         {
-            throw new NotImplementedException();
+            _context = libraryContext;
         }
 
-        public Task AddAsync(Book entity)
+        public void Add(Book entity)
         {
-            throw new NotImplementedException();
+            _context.Books.Add(entity);
+            _context.SaveChanges();
+        }
+
+        public async Task AddAsync(Book entity)
+        {
+            await Task.Run(() => Add(entity));
         }
 
         public void Delete(Book entity)
         {
-            throw new NotImplementedException();
+            _context.Books.Remove(entity);
+            _context.SaveChanges();
         }
 
-        public Task DeleteAsync(Book entity)
+        public async Task DeleteAsync(Book entity)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => Delete(entity));
         }
 
         public IEnumerable<Book> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Books;
         }
 
-        public Task<IEnumerable<Book>> GetAllAsync()
+        public async Task<IEnumerable<Book>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => GetAll());
         }
 
         public void Update(Book entity)
         {
-            throw new NotImplementedException();
+            _context.Books.Update(entity);
+            _context.SaveChanges();
         }
 
-        public Task UpdateAsync(Book entity)
+        public async Task UpdateAsync(Book entity)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => Update(entity));
         }
     }
 }

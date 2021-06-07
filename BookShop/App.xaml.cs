@@ -2,12 +2,6 @@
 using BookShop.Models;
 using BookShop.View;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BookShop
@@ -17,17 +11,18 @@ namespace BookShop
     /// </summary>
     public partial class App : Application
     {
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
 
         public App()
         {
-            ServiceCollection services = new ServiceCollection();
+            ServiceCollection services = new();
             ConfigureServices(services);
             _serviceProvider = services.BuildServiceProvider();
         }
 
         private void ConfigureServices(ServiceCollection services)
         {
+            services.AddDbContext<LibraryContext>();
             services.AddScoped<IProductRepository<Book>, BookRepository>();
             services.AddScoped<IProductRepository<Journal>, JournalRepository>();
             services.AddSingleton<MainWindow>();

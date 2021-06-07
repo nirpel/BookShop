@@ -10,7 +10,12 @@ namespace BookShop.Models
     /// Represents a general Library readable item
     /// </summary>
     public abstract class Product
-    {
+    {        
+        /// <summary>
+        /// Represents Product's unique identifyer
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Represents Product's name
         /// </summary>
@@ -30,11 +35,6 @@ namespace BookShop.Models
         /// Represents the discount percentage dividev by 100 - between 0 to 1
         /// </summary>
         public double Discount { get; set; }
-
-        /// <summary>
-        /// Represents Product's unique identifyer
-        /// </summary>
-        public int ID { get; set; }
 
         /// <summary>
         /// Represents Product's genre

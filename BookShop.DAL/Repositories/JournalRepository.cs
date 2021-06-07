@@ -1,52 +1,59 @@
 ﻿using BookShop.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BookShop.DAL
 {
     public class JournalRepository : IProductRepository<Journal>
     {
-        public void Add(Journal entity)
+        LibraryContext _context;
+
+        public JournalRepository(LibraryContext libraryContext)
         {
-            throw new NotImplementedException();
+            _context = libraryContext;
         }
 
-        public Task AddAsync(Journal entity)
+        public void Add(Journal entity)
         {
-            throw new NotImplementedException();
+            _context.Journals.Add(entity);
+            _context.SaveChanges();
+        }
+
+        public async Task AddAsync(Journal entity)
+        {
+            await Task.Run(() => Add(entity));
         }
 
         public void Delete(Journal entity)
         {
-            throw new NotImplementedException();
+            _context.Journals.Remove(entity);
+            _context.SaveChanges();
         }
 
-        public Task DeleteAsync(Journal entity)
+        public async Task DeleteAsync(Journal entity)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => Delete(entity));
         }
 
         public IEnumerable<Journal> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Journals;
         }
 
-        public Task<IEnumerable<Journal>> GetAllAsync()
+        public async Task<IEnumerable<Journal>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => GetAll());
         }
 
         public void Update(Journal entity)
         {
-            throw new NotImplementedException();
+            _context.Journals.Update(entity);
+            _context.SaveChanges();
         }
 
-        public Task UpdateAsync(Journal entity)
+        public async Task UpdateAsync(Journal entity)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => Update(entity));
         }
     }
 }

@@ -6,13 +6,11 @@ namespace BookShop.DAL
     /// <summary>
     /// DbContext for Book Shop SQL Database
     /// </summary>
-    internal class LibraryContext : DbContext
+    public class LibraryContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
 
         public DbSet<Journal> Journals { get; set; }
-
-        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
