@@ -1,0 +1,42 @@
+﻿namespace BookShop.Models
+{
+    public enum Genre
+    {
+        Action,
+        Adventure,
+        Anthology,
+        Art,
+        Business,
+        Children,
+        Classic,
+        Comics,
+        Coocking,
+        Crime,
+        Dictionary,
+        Drama,
+        Encyclopedia,
+        FairyTale,
+        Fantasy,
+        Guide,
+        Health,
+        Fitness,
+        History,
+        Humor,
+        Horror,
+        Mystery,
+        Math,
+        Pictures,
+        Philosophy,
+        Poetry,
+        Prayer,
+        Politics,
+        Religion,
+        Romance,
+        Satire,
+        Science,
+        Review,
+        Sports,
+        Travel,
+        Zoology
+    }
+}
