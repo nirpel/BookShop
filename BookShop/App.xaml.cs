@@ -1,4 +1,5 @@
-﻿using BookShop.DAL;
+﻿using BookShop.BLL;
+using BookShop.DAL;
 using BookShop.Models;
 using BookShop.View;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,7 @@ namespace BookShop
             services.AddDbContext<LibraryContext>();
             services.AddScoped<IProductRepository<Book>, BookRepository>();
             services.AddScoped<IProductRepository<Journal>, JournalRepository>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddSingleton<MainWindow>();
         }
 
