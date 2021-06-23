@@ -2,6 +2,8 @@
 using BookShop.DAL;
 using BookShop.Models;
 using BookShop.View;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
@@ -14,6 +16,8 @@ namespace BookShop
     {
         private readonly ServiceProvider _serviceProvider;
 
+        public static IConfigurationRoot Configuration { get; set; }
+
         public App()
         {
             ServiceCollection services = new();
@@ -23,6 +27,7 @@ namespace BookShop
 
         private void ConfigureServices(ServiceCollection services)
         {
+            // NOTE: configuration implementation might cause problems later.
             services.AddDbContext<LibraryContext>();
             services.AddScoped<IProductRepository<Book>, BookRepository>();
             services.AddScoped<IProductRepository<Journal>, JournalRepository>();

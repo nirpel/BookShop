@@ -1,4 +1,6 @@
-﻿using BookShop.DAL;
+﻿using BookShop.BLL;
+using BookShop.DAL;
+using BookShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
